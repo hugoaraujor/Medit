@@ -20,6 +20,7 @@ namespace Medit
             this.textB1.Text = palabra;
 
         }
+        // Forma para captar un Valor string 
         public String value()
         {
             return palabra; 
