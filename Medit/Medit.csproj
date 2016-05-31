@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4BF9AD23-BB00-42DE-AA86-6979D93FE857}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Medit</RootNamespace>
+    <AssemblyName>Medit</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publicar\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>LOGOMITSMALL.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AForge.Video">
+      <HintPath>..\..\..\..\WebCams\WebCams\bin\Debug\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow">
+      <HintPath>..\..\..\..\WebCams\WebCams\bin\Debug\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Busquedas\Buscadependientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busquedas\Buscadependientes.Designer.cs">
+      <DependentUpon>Buscadependientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Busquedas\BuscarCargos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busquedas\BuscarCargos.Designer.cs">
+      <DependentUpon>BuscarCargos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Busquedas\BuscarIngresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busquedas\BuscarIngresos.Designer.cs">
+      <DependentUpon>BuscarIngresos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Busquedas\BuscarMedicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busquedas\BuscarMedicos.Designer.cs">
+      <DependentUpon>BuscarMedicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Busquedas\Busqueda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busquedas\Busqueda.Designer.cs">
+      <DependentUpon>Busqueda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Busquedas\BuscarPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busquedas\BuscarPaciente.Designer.cs">
+      <DependentUpon>BuscarPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonPlus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ButtonPlus.Designer.cs">
+      <DependentUpon>ButtonPlus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CargoClases.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargoClases.Designer.cs">
+      <DependentUpon>CargoClases.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cargos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cargos.Designer.cs">
+      <DependentUpon>Cargos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clinica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clinica.Designer.cs">
+      <DependentUpon>Clinica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComboPlus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboPlus.Designer.cs">
+      <DependentUpon>ComboPlus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dependiente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dependiente.Designer.cs">
+      <DependentUpon>Dependiente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="camara.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="camara.designer.cs">
+      <DependentUpon>camara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Detalle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Detalle.Designer.cs">
+      <DependentUpon>Detalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EspecialidadesFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EspecialidadesFrm.Designer.cs">
+      <DependentUpon>EspecialidadesFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExamenCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExamenCtrl.Designer.cs">
+      <DependentUpon>ExamenCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Globales.cs" />
+    <Compile Include="Informes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Informes.Designer.cs">
+      <DependentUpon>Informes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ingreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ingreso.Designer.cs">
+      <DependentUpon>Ingreso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IntelliRTB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IntelliRTB.Designer.cs">
+      <DependentUpon>IntelliRTB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licencia.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Empresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Empresas.Designer.cs">
+      <DependentUpon>Frm_Empresas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GifHelper.cs" />
+    <Compile Include="Historia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historia.Designer.cs">
+      <DependentUpon>Historia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IdEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IdEntry.Designer.cs">
+      <DependentUpon>IdEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LOGIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LOGIN.designer.cs">
+      <DependentUpon>LOGIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Medico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Medico.Designer.cs">
+      <DependentUpon>Medico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicosFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicosFrm.Designer.cs">
+      <DependentUpon>MedicosFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OneValueFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OneValueFrm.Designer.cs">
+      <DependentUpon>OneValueFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recipe.designer.cs">
+      <DependentUpon>Recipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scanner.Designer.cs">
+      <DependentUpon>Scanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="TextB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TextRange.cs" />
+    <Compile Include="UsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsersForm.Designer.cs">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs" />
+    <Compile Include="Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios.Designer.cs">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utiles.cs" />
+    <Compile Include="View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View.Designer.cs">
+      <DependentUpon>View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wait.Designer.cs">
+      <DependentUpon>wait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Word.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Word.Designer.cs">
+      <DependentUpon>Word.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busquedas\Buscadependientes.resx">
+      <DependentUpon>Buscadependientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busquedas\BuscarCargos.resx">
+      <DependentUpon>BuscarCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busquedas\BuscarIngresos.resx">
+      <DependentUpon>BuscarIngresos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busquedas\BuscarMedicos.resx">
+      <DependentUpon>BuscarMedicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busquedas\Busqueda.resx">
+      <DependentUpon>Busqueda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busquedas\BuscarPaciente.resx">
+      <DependentUpon>BuscarPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CargoClases.resx">
+      <DependentUpon>CargoClases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cargos.resx">
+      <DependentUpon>Cargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clinica.resx">
+      <DependentUpon>Clinica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dependiente.resx">
+      <DependentUpon>Dependiente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="camara.resx">
+      <DependentUpon>camara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Detalle.resx">
+      <DependentUpon>Detalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EspecialidadesFrm.resx">
+      <DependentUpon>EspecialidadesFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExamenCtrl.resx">
+      <DependentUpon>ExamenCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Informes.resx">
+      <DependentUpon>Informes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ingreso.resx">
+      <DependentUpon>Ingreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Empresas.resx">
+      <DependentUpon>Frm_Empresas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historia.resx">
+      <DependentUpon>Historia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IdEntry.resx">
+      <DependentUpon>IdEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LOGIN.resx">
+      <DependentUpon>LOGIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Medico.resx">
+      <DependentUpon>Medico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicosFrm.resx">
+      <DependentUpon>MedicosFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OneValueFrm.resx">
+      <DependentUpon>OneValueFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Recipe.resx">
+      <DependentUpon>Recipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scanner.resx">
+      <DependentUpon>Scanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersForm.resx">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios.resx">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View.resx">
+      <DependentUpon>View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wait.resx">
+      <DependentUpon>wait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Word.resx">
+      <DependentUpon>Word.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BussinessLayer\BussinessLayer.csproj">
+      <Project>{62713a73-611f-45f1-b231-b03d273d12c6}</Project>
+      <Name>BussinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEntities\DataEntities.csproj">
+      <Project>{07f6448a-cbed-4d73-88b1-4f58dda8f0e9}</Project>
+      <Name>DataEntities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WIA">
+      <Guid>{94A0E92D-43C0-494E-AC29-FD45948A5221}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scan0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ADD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NEW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DELE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\foto.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cam.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancelar.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\confirm.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveok.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\savecancel.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cam2.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuevo.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deleteicon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wait.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cam21.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FONDO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LOGOMITSMALL.ico" />
+    <None Include="Resources\print.png" />
+    <None Include="Resources\plus2.png" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\add.dds" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+    <Folder Include="Controles\" />
+    <Folder Include="obj\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

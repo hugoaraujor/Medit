@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Medit.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Scanner" Type="System.String" Scope="User">
+      <Value Profile="(Default)">HP psc 1310 series</Value>
+    </Setting>
+    <Setting Name="DirectorioImagenes" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\Corinto\Imagenes</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

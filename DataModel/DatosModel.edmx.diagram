@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8021d5daf55e44acafcd951623821ef4" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="AGILMEDModel.Ciudades" Width="1.5" PointX="2.125" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AGILMEDModel.Estados" Width="1.5" PointX="2.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AGILMEDModel.PACIENTES" Width="1.5" PointX="4" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AGILMEDModel.Usuarios" Width="1.5" PointX="0.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AGILMEDModel.Ocupaciones" Width="1.5" PointX="4" PointY="7" />
+        <EntityTypeShape EntityType="AGILMEDModel.Empresas" Width="1.5" PointX="9.375" PointY="10.75" />
+        <EntityTypeShape EntityType="AGILMEDModel.Dependientes" Width="1.5" PointX="5.75" PointY="0.5" />
+        <EntityTypeShape EntityType="AGILMEDModel.Cargos" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="AGILMEDModel.CargosClases" Width="1.5" PointX="4" PointY="8.625" />
+        <EntityTypeShape EntityType="AGILMEDModel.DetalleFactura" Width="1.5" PointX="6.75" PointY="11" />
+        <EntityTypeShape EntityType="AGILMEDModel.Documentos" Width="1.5" PointX="6.75" PointY="8.75" />
+        <EntityTypeShape EntityType="AGILMEDModel.Factura" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AGILMEDModel.TipodeCargos" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AGILMEDModel.Correlativos" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="AGILMEDModel.LOCAL" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="AGILMEDModel.CLINICA" Width="1.5" PointX="0.5" PointY="4.625" />
+        <EntityTypeShape EntityType="AGILMEDModel.Subproductos" Width="1.5" PointX="7.875" PointY="6" />
+        <EntityTypeShape EntityType="AGILMEDModel.Ingresos" Width="1.5" PointX="11.375" PointY="11.75" />
+        <EntityTypeShape EntityType="AGILMEDModel.Eventos" Width="1.5" PointX="12.375" PointY="3.75" />
+        <EntityTypeShape EntityType="AGILMEDModel.medicos" Width="1.5" PointX="4.5" PointY="10.375" />
+        <EntityTypeShape EntityType="AGILMEDModel.Especialidades" Width="1.5" PointX="13.375" PointY="6.75" />
+        <EntityTypeShape EntityType="AGILMEDModel.diagnosticos" Width="1.5" PointX="13.375" PointY="9.75" />
+        <EntityTypeShape EntityType="AGILMEDModel.medicinas" Width="1.5" PointX="7.625" PointY="3.25" />
+        <EntityTypeShape EntityType="AGILMEDModel.recipes" Width="1.5" PointX="5.875" PointY="3.25" />
+        <EntityTypeShape EntityType="AGILMEDModel.sintomas" Width="1.5" PointX="5.875" PointY="6" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

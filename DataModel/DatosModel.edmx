@@ -1,0 +1,1137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AGILMEDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cargos">
+          <Key>
+            <PropertyRef Name="CargoId" />
+          </Key>
+          <Property Name="CargoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipocargo" Type="int" />
+          <Property Name="Grupo" Type="int" />
+          <Property Name="descripción" Type="varchar" MaxLength="80" />
+          <Property Name="coste" Type="money" />
+          <Property Name="precio1" Type="money" />
+          <Property Name="precio2" Type="money" />
+          <Property Name="precio3" Type="money" />
+          <Property Name="precio4" Type="money" />
+          <Property Name="precio5" Type="money" />
+          <Property Name="inventario" Type="bit" />
+          <Property Name="Kit" Type="bit" />
+          <Property Name="agrupable" Type="bit" />
+          <Property Name="presentacion" Type="varchar" MaxLength="50" />
+          <Property Name="indicaciones" Type="varchar" MaxLength="200" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="via" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="CargosClases">
+          <Key>
+            <PropertyRef Name="ClaseId" />
+          </Key>
+          <Property Name="ClaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoCargoId" Type="int" Nullable="false" />
+          <Property Name="Clase" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Ciudades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ciudad" Type="varchar" MaxLength="25" />
+          <Property Name="Estado" Type="int" />
+        </EntityType>
+        <EntityType Name="CLINICA">
+          <Key>
+            <PropertyRef Name="IDCLINICA" />
+          </Key>
+          <Property Name="IDCLINICA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CLINICA" Type="varchar" MaxLength="50" />
+          <Property Name="RIF" Type="varchar" MaxLength="15" />
+          <Property Name="Direccion1" Type="varchar" MaxLength="80" />
+          <Property Name="Direccion2" Type="varchar" MaxLength="80" />
+          <Property Name="Direccion3" Type="varchar" MaxLength="80" />
+          <Property Name="Direccion4" Type="varchar" MaxLength="80" />
+          <Property Name="Ciudad" Type="varchar" MaxLength="80" />
+          <Property Name="Telefonos" Type="varchar" MaxLength="40" />
+          <Property Name="responsable" Type="varchar" MaxLength="20" />
+          <Property Name="DirectorioImagenes" Type="varchar" MaxLength="100" />
+          <Property Name="DirectorioExportados" Type="varchar" MaxLength="100" />
+          <Property Name="Correo" Type="varchar" MaxLength="100" />
+          <Property Name="ArchivoLogo" Type="varchar" MaxLength="25" />
+          <Property Name="numerodeLicencia" Type="varchar" MaxLength="25" />
+          <Property Name="FechadeInstalación" Type="date" />
+        </EntityType>
+        <EntityType Name="Correlativos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FACTURA" Type="bigint" />
+          <Property Name="PRESUPUESTO" Type="bigint" />
+          <Property Name="LABORATORIO" Type="bigint" />
+          <Property Name="INFORMEMEDICO" Type="bigint" />
+          <Property Name="HOSPITALIZACION" Type="bigint" />
+          <Property Name="OTRO1" Type="bigint" />
+          <Property Name="OTRO2" Type="bigint" />
+          <Property Name="EQUIPO" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Dependientes">
+          <Key>
+            <PropertyRef Name="Dependienteid" />
+          </Key>
+          <Property Name="Dependienteid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Parentesco" Type="int" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="Identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PacienteId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="DetalleFactura">
+          <Key>
+            <PropertyRef Name="idfactura" />
+          </Key>
+          <Property Name="Factura" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="idcargo" Type="bigint" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="preciounitario" Type="money" Nullable="false" />
+          <Property Name="iva" Type="money" />
+          <Property Name="monto" Type="money" Nullable="false" />
+          <Property Name="tipocargo" Type="int" Nullable="false" />
+          <Property Name="clase" Type="int" Nullable="false" />
+          <Property Name="totaliza" Type="bit" Nullable="false" />
+          <Property Name="observaciones" Type="varchar" MaxLength="60" />
+          <Property Name="idfactura" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="diagnosticos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="diagnostico" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Documentos">
+          <Key>
+            <PropertyRef Name="idDocumento" />
+          </Key>
+          <Property Name="idPaciente" Type="bigint" />
+          <Property Name="TipoDocumento" Type="varchar" MaxLength="28" />
+          <Property Name="observaciones" Type="varchar" MaxLength="30" />
+          <Property Name="idDocumento" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Archivo" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Empresa" Type="varchar" MaxLength="35" />
+          <Property Name="RIF" Type="varchar" MaxLength="15" />
+          <Property Name="Direccion" Type="varchar" MaxLength="150" />
+          <Property Name="Contacto" Type="varchar" MaxLength="30" />
+          <Property Name="Telefonos" Type="varchar" MaxLength="35" />
+          <Property Name="Correo" Type="varchar" MaxLength="100" />
+          <Property Name="created" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Aseguradora" Type="bit" />
+          <Property Name="creditodias" Type="int" />
+          <Property Name="limite" Type="money" />
+        </EntityType>
+        <EntityType Name="Especialidades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Especialidad" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Eventos">
+          <Key>
+            <PropertyRef Name="idevento" />
+          </Key>
+          <Property Name="admisionid" Type="bigint" />
+          <Property Name="idevento" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipoevento" Type="int" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="auditoria" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="usuarioid" Type="int" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+          </Key>
+          <Property Name="IdFactura" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Factura" Type="varchar" MaxLength="8" />
+          <Property Name="Control" Type="varchar" MaxLength="8" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Para" Type="bigint" />
+          <Property Name="Paciente" Type="bigint" />
+          <Property Name="Observaciones" Type="nchar" MaxLength="10" />
+          <Property Name="Dias" Type="int" />
+          <Property Name="FormadePago" Type="int" />
+          <Property Name="rif" Type="varchar" MaxLength="15" />
+          <Property Name="total" Type="money" />
+          <Property Name="iva" Type="money" />
+          <Property Name="neto" Type="money" />
+          <Property Name="Descuentos" Type="money" />
+          <Property Name="Usuario" Type="int" />
+          <Property Name="mes" Type="int" />
+          <Property Name="anio" Type="int" />
+          <Property Name="codigodecuenta" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Ingresos">
+          <Key>
+            <PropertyRef Name="admisionid" />
+          </Key>
+          <Property Name="admisionid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fechaingreso" Type="date" Nullable="false" />
+          <Property Name="fechasalida" Type="date" />
+          <Property Name="procesada" Type="int" />
+          <Property Name="motivo" Type="int" Nullable="false" />
+          <Property Name="observaciones" Type="varchar" MaxLength="80" />
+          <Property Name="tipodeingreso" Type="int" Nullable="false" />
+          <Property Name="ticket" Type="varchar" MaxLength="10" />
+          <Property Name="clave" Type="varchar" MaxLength="10" />
+          <Property Name="created" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="trabajadorid" Type="bigint" Nullable="false" />
+          <Property Name="cedulatrabajador" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="dependienteid" Type="bigint" Nullable="false" />
+          <Property Name="nombrepaciente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ceduladebeneficiario" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="esbeneficiario" Type="bit" Nullable="false" />
+          <Property Name="cedulapaciente" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="usuarioid" Type="int" Nullable="false" />
+          <Property Name="refieremedico" Type="bigint" />
+          <Property Name="empresaid" Type="int" />
+          <Property Name="aseguradoraid" Type="int" />
+        </EntityType>
+        <EntityType Name="LOCAL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EQUIPO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CAMARAWEB" Type="varchar" MaxLength="50" />
+          <Property Name="SCANNER" Type="varchar" MaxLength="50" />
+          <Property Name="IMPRESORA" Type="varchar" MaxLength="60" />
+          <Property Name="IMPRESORA2" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="medicinas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="medicamento" Type="varchar" MaxLength="50" />
+          <Property Name="presentacion" Type="varchar" MaxLength="30" />
+          <Property Name="indicaciones" Type="varchar" MaxLength="200" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="via" Type="int" />
+        </EntityType>
+        <EntityType Name="medicos">
+          <Key>
+            <PropertyRef Name="doctorid" />
+          </Key>
+          <Property Name="doctorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombres" Type="varchar" MaxLength="30" />
+          <Property Name="apellidos" Type="varchar" MaxLength="30" />
+          <Property Name="telefono" Type="varchar" MaxLength="30" />
+          <Property Name="telefono2" Type="varchar" MaxLength="30" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="horariodeconsulta" Type="varchar" MaxLength="30" />
+          <Property Name="especialidad" Type="int" />
+          <Property Name="ncm" Type="varchar" MaxLength="15" />
+          <Property Name="especialista" Type="bit" />
+        </EntityType>
+        <EntityType Name="Ocupaciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ocupacion" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="PACIENTES">
+          <Key>
+            <PropertyRef Name="PACIENTEID" />
+          </Key>
+          <Property Name="PACIENTEID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDENTIFICACION" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NOMBRES" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="APELLIDOS" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="FECHANAC" Type="date" Nullable="false" />
+          <Property Name="TIPO" Type="int" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="50" />
+          <Property Name="EMPRESA" Type="int" />
+          <Property Name="ASEGURADORA" Type="int" />
+          <Property Name="EDOCIVIL" Type="int" />
+          <Property Name="NOMBRECONYUGUE" Type="varchar" MaxLength="50" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TELEFONO2" Type="varchar" MaxLength="20" />
+          <Property Name="MOVIL" Type="varchar" MaxLength="20" />
+          <Property Name="CARGO" Type="int" />
+          <Property Name="EQUIPO" Type="varchar" MaxLength="25" />
+          <Property Name="ARCHIVOCEDULA" Type="varchar" MaxLength="20" />
+          <Property Name="SEXO" Type="int" Nullable="false" />
+          <Property Name="EDAD" Type="int" Nullable="false" />
+          <Property Name="CREATED" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="ULTIMAVISITA" Type="date" />
+          <Property Name="CIUDAD" Type="int" Nullable="false" />
+          <Property Name="ESTADO" Type="int" Nullable="false" />
+          <Property Name="NACIONALIDAD" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="OBSERVACIONES" Type="varchar" MaxLength="160" />
+          <Property Name="FICHALABORAL" Type="varchar" MaxLength="10" />
+          <Property Name="SECTOR" Type="varchar" MaxLength="25" />
+          <Property Name="ASEGURADORA2" Type="int" />
+        </EntityType>
+        <EntityType Name="recipes">
+          <Key>
+            <PropertyRef Name="ingresoid" />
+          </Key>
+          <Property Name="ingresoid" Type="bigint" Nullable="false" />
+          <Property Name="recipeid" Type="bigint" Nullable="false" />
+          <Property Name="pacienteid" Type="bigint" Nullable="false" />
+          <Property Name="doctorid" Type="int" Nullable="false" />
+          <Property Name="medicamentoid" Type="int" Nullable="false" />
+          <Property Name="indicaciones" Type="varchar" MaxLength="200" />
+          <Property Name="observaciones" Type="varchar" MaxLength="200" />
+          <Property Name="fecha" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="sintomas">
+          <Key>
+            <PropertyRef Name="idsintoma" />
+          </Key>
+          <Property Name="idsintoma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sintoma" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Subproductos">
+          <Key>
+            <PropertyRef Name="subprodid" />
+          </Key>
+          <Property Name="cargoid" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="subprodid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parentid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipodeCargos">
+          <Key>
+            <PropertyRef Name="TipoCargoId" />
+          </Key>
+          <Property Name="TipoCargoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipocargoDesc" Type="varchar" MaxLength="28" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+          <Property Name="TipodeAcceso" Type="int" Nullable="false" />
+          <Property Name="Modulos" Type="varchar" MaxLength="200" />
+          <Property Name="lastlogin" Type="datetime" />
+          <Property Name="created" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="Rol" Type="money" />
+          <Property Name="Correo" Type="varchar" MaxLength="80" />
+          <Property Name="telefono" Type="varchar" MaxLength="25" />
+          <Property Name="Nombres" Type="varchar" MaxLength="30" />
+          <Property Name="password" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityContainer Name="AGILMEDModelStoreContainer">
+          <EntitySet Name="Cargos" EntityType="Self.Cargos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CargosClases" EntityType="Self.CargosClases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudades" EntityType="Self.Ciudades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLINICA" EntityType="Self.CLINICA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Correlativos" EntityType="Self.Correlativos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dependientes" EntityType="Self.Dependientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleFactura" EntityType="Self.DetalleFactura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="diagnosticos" EntityType="Self.diagnosticos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documentos" EntityType="Self.Documentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Especialidades" EntityType="Self.Especialidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ingresos" EntityType="Self.Ingresos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOCAL" EntityType="Self.LOCAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="medicinas" EntityType="Self.medicinas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="medicos" EntityType="Self.medicos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ocupaciones" EntityType="Self.Ocupaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PACIENTES" EntityType="Self.PACIENTES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipes" EntityType="Self.recipes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sintomas" EntityType="Self.sintomas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subproductos" EntityType="Self.Subproductos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipodeCargos" EntityType="Self.TipodeCargos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AGILMEDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ciudades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ciudad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Estados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PACIENTES">
+          <Key>
+            <PropertyRef Name="PACIENTEID" />
+          </Key>
+          <Property Name="PACIENTEID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDENTIFICACION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRES" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDOS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHANAC" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TIPO" Type="Int32" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMPRESA" Type="Int32" />
+          <Property Name="ASEGURADORA" Type="Int32" />
+          <Property Name="EDOCIVIL" Type="Int32" />
+          <Property Name="NOMBRECONYUGUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MOVIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CARGO" Type="Int32" />
+          <Property Name="EQUIPO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ARCHIVOCEDULA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SEXO" Type="Int32" Nullable="false" />
+          <Property Name="EDAD" Type="Int32" Nullable="false" />
+          <Property Name="CREATED" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ULTIMAVISITA" Type="DateTime" Precision="0" />
+          <Property Name="CIUDAD" Type="Int32" Nullable="false" />
+          <Property Name="ESTADO" Type="Int32" Nullable="false" />
+          <Property Name="NACIONALIDAD" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OBSERVACIONES" Type="String" MaxLength="160" FixedLength="false" Unicode="false" />
+          <Property Name="FICHALABORAL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SECTOR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ASEGURADORA2" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <Property Name="TipodeAcceso" Type="Int32" Nullable="false" />
+          <Property Name="Modulos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="lastlogin" Type="DateTime" Precision="3" />
+          <Property Name="created" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Rol" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Correo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Nombres" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="AGILMEDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ciudades" EntityType="Self.Ciudades" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" />
+          <EntitySet Name="PACIENTES" EntityType="Self.PACIENTES" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <EntitySet Name="Ocupaciones" EntityType="AGILMEDModel.Ocupaciones" />
+          <EntitySet Name="Empresas" EntityType="AGILMEDModel.Empresas" />
+          <EntitySet Name="Dependientes" EntityType="AGILMEDModel.Dependientes" />
+          <EntitySet Name="Cargos" EntityType="AGILMEDModel.Cargos" />
+          <EntitySet Name="CargosClases" EntityType="AGILMEDModel.CargosClases" />
+          <EntitySet Name="DetalleFactura" EntityType="AGILMEDModel.DetalleFactura" />
+          <EntitySet Name="Documentos" EntityType="AGILMEDModel.Documentos" />
+          <EntitySet Name="Factura" EntityType="AGILMEDModel.Factura" />
+          <EntitySet Name="TipodeCargos" EntityType="AGILMEDModel.TipodeCargos" />
+          <EntitySet Name="Correlativos" EntityType="AGILMEDModel.Correlativos" />
+          <EntitySet Name="LOCAL" EntityType="AGILMEDModel.LOCAL" />
+          <EntitySet Name="CLINICA" EntityType="AGILMEDModel.CLINICA" />
+          <EntitySet Name="Subproductos" EntityType="AGILMEDModel.Subproductos" />
+          <EntitySet Name="Ingresos" EntityType="AGILMEDModel.Ingresos" />
+          <EntitySet Name="Eventos" EntityType="AGILMEDModel.Eventos" />
+          <EntitySet Name="medicos" EntityType="AGILMEDModel.medicos" />
+          <EntitySet Name="Especialidades" EntityType="AGILMEDModel.Especialidades" />
+          <EntitySet Name="diagnosticos" EntityType="AGILMEDModel.diagnosticos" />
+          <EntitySet Name="medicinas" EntityType="AGILMEDModel.medicinas" />
+          <EntitySet Name="recipes" EntityType="AGILMEDModel.recipes" />
+          <EntitySet Name="sintomas" EntityType="AGILMEDModel.sintomas" />
+        </EntityContainer>
+        <EntityType Name="Ocupaciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ocupacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Empresa" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="RIF" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Contacto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Telefonos" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="created" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Aseguradora" Type="Boolean" />
+          <Property Name="creditodias" Type="Int32" />
+          <Property Name="limite" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Dependientes">
+          <Key>
+            <PropertyRef Name="Dependienteid" />
+          </Key>
+          <Property Name="Dependienteid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Parentesco" Type="Int32" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Identificacion" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PacienteId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Cargos">
+          <Key>
+            <PropertyRef Name="CargoId" />
+          </Key>
+          <Property Name="CargoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipocargo" Type="Int32" />
+          <Property Name="Grupo" Type="Int32" />
+          <Property Name="descripción" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="coste" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="precio1" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="precio2" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="precio3" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="precio4" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="precio5" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="inventario" Type="Boolean" />
+          <Property Name="Kit" Type="Boolean" />
+          <Property Name="agrupable" Type="Boolean" />
+          <Property Name="presentacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="indicaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="via" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CargosClases">
+          <Key>
+            <PropertyRef Name="ClaseId" />
+          </Key>
+          <Property Name="ClaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoCargoId" Type="Int32" Nullable="false" />
+          <Property Name="Clase" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DetalleFactura">
+          <Key>
+            <PropertyRef Name="idfactura" />
+          </Key>
+          <Property Name="Factura" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="idcargo" Type="Int64" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="preciounitario" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="iva" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="monto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="tipocargo" Type="Int32" Nullable="false" />
+          <Property Name="clase" Type="Int32" Nullable="false" />
+          <Property Name="totaliza" Type="Boolean" Nullable="false" />
+          <Property Name="observaciones" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="idfactura" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Documentos">
+          <Key>
+            <PropertyRef Name="idDocumento" />
+          </Key>
+          <Property Name="idPaciente" Type="Int64" />
+          <Property Name="TipoDocumento" Type="String" MaxLength="28" FixedLength="false" Unicode="false" />
+          <Property Name="observaciones" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="idDocumento" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Archivo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+          </Key>
+          <Property Name="IdFactura" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Factura1" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Control" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Para" Type="Int64" />
+          <Property Name="Paciente" Type="Int64" />
+          <Property Name="Observaciones" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Dias" Type="Int32" />
+          <Property Name="FormadePago" Type="Int32" />
+          <Property Name="rif" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="iva" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="neto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Descuentos" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Usuario" Type="Int32" />
+          <Property Name="mes" Type="Int32" />
+          <Property Name="anio" Type="Int32" />
+          <Property Name="codigodecuenta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TipodeCargos">
+          <Key>
+            <PropertyRef Name="TipoCargoId" />
+          </Key>
+          <Property Name="TipoCargoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipocargoDesc" Type="String" MaxLength="28" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Correlativos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FACTURA" Type="Int64" />
+          <Property Name="PRESUPUESTO" Type="Int64" />
+          <Property Name="LABORATORIO" Type="Int64" />
+          <Property Name="INFORMEMEDICO" Type="Int64" />
+          <Property Name="HOSPITALIZACION" Type="Int64" />
+          <Property Name="OTRO1" Type="Int64" />
+          <Property Name="OTRO2" Type="Int64" />
+          <Property Name="EQUIPO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LOCAL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EQUIPO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CAMARAWEB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SCANNER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IMPRESORA" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="IMPRESORA2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CLINICA">
+          <Key>
+            <PropertyRef Name="IDCLINICA" />
+          </Key>
+          <Property Name="IDCLINICA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CLINICA1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RIF" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion1" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion2" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion3" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion4" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Ciudad" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Telefonos" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="responsable" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DirectorioImagenes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DirectorioExportados" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ArchivoLogo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="numerodeLicencia" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FechadeInstalación" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Subproductos">
+          <Key>
+            <PropertyRef Name="subprodid" />
+          </Key>
+          <Property Name="cargoid" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="subprodid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parentid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ingresos">
+          <Key>
+            <PropertyRef Name="admisionid" />
+          </Key>
+          <Property Name="admisionid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaingreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechasalida" Type="DateTime" Precision="0" />
+          <Property Name="procesada" Type="Int32" />
+          <Property Name="motivo" Type="Int32" Nullable="false" />
+          <Property Name="observaciones" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="tipodeingreso" Type="Int32" Nullable="false" />
+          <Property Name="ticket" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="clave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="created" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="trabajadorid" Type="Int64" Nullable="false" />
+          <Property Name="cedulatrabajador" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="dependienteid" Type="Int64" Nullable="false" />
+          <Property Name="nombrepaciente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ceduladebeneficiario" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="esbeneficiario" Type="Boolean" Nullable="false" />
+          <Property Name="cedulapaciente" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="usuarioid" Type="Int32" Nullable="false" />
+          <Property Name="refieremedico" Type="Int64" />
+          <Property Name="empresaid" Type="Int32" />
+          <Property Name="aseguradoraid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Eventos">
+          <Key>
+            <PropertyRef Name="idevento" />
+          </Key>
+          <Property Name="admisionid" Type="Int64" />
+          <Property Name="idevento" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoevento" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="auditoria" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="usuarioid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="medicos">
+          <Key>
+            <PropertyRef Name="doctorid" />
+          </Key>
+          <Property Name="doctorid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombres" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="apellidos" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="telefono2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="horariodeconsulta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="especialidad" Type="Int32" />
+          <Property Name="ncm" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="especialista" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Especialidades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Especialidad" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="diagnosticos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="diagnostico" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="medicinas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="medicamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="presentacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="indicaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="via" Type="Int32" />
+        </EntityType>
+        <EntityType Name="recipes">
+          <Key>
+            <PropertyRef Name="ingresoid" />
+          </Key>
+          <Property Name="ingresoid" Type="Int64" Nullable="false" />
+          <Property Name="recipeid" Type="Int64" Nullable="false" />
+          <Property Name="pacienteid" Type="Int64" Nullable="false" />
+          <Property Name="doctorid" Type="Int32" Nullable="false" />
+          <Property Name="medicamentoid" Type="Int32" Nullable="false" />
+          <Property Name="indicaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="observaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="sintomas">
+          <Key>
+            <PropertyRef Name="idsintoma" />
+          </Key>
+          <Property Name="idsintoma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sintoma" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AGILMEDModelStoreContainer" CdmEntityContainer="AGILMEDEntities">
+          <EntitySetMapping Name="Ciudades">
+            <EntityTypeMapping TypeName="AGILMEDModel.Ciudades">
+              <MappingFragment StoreEntitySet="Ciudades">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estados">
+            <EntityTypeMapping TypeName="AGILMEDModel.Estados">
+              <MappingFragment StoreEntitySet="Estados">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PACIENTES">
+            <EntityTypeMapping TypeName="AGILMEDModel.PACIENTES">
+              <MappingFragment StoreEntitySet="PACIENTES">
+                <ScalarProperty Name="ASEGURADORA2" ColumnName="ASEGURADORA2" />
+                <ScalarProperty Name="PACIENTEID" ColumnName="PACIENTEID" />
+                <ScalarProperty Name="IDENTIFICACION" ColumnName="IDENTIFICACION" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="FECHANAC" ColumnName="FECHANAC" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="EMPRESA" ColumnName="EMPRESA" />
+                <ScalarProperty Name="ASEGURADORA" ColumnName="ASEGURADORA" />
+                <ScalarProperty Name="EDOCIVIL" ColumnName="EDOCIVIL" />
+                <ScalarProperty Name="NOMBRECONYUGUE" ColumnName="NOMBRECONYUGUE" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="TELEFONO2" ColumnName="TELEFONO2" />
+                <ScalarProperty Name="MOVIL" ColumnName="MOVIL" />
+                <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+                <ScalarProperty Name="EQUIPO" ColumnName="EQUIPO" />
+                <ScalarProperty Name="ARCHIVOCEDULA" ColumnName="ARCHIVOCEDULA" />
+                <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+                <ScalarProperty Name="EDAD" ColumnName="EDAD" />
+                <ScalarProperty Name="CREATED" ColumnName="CREATED" />
+                <ScalarProperty Name="ULTIMAVISITA" ColumnName="ULTIMAVISITA" />
+                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="NACIONALIDAD" ColumnName="NACIONALIDAD" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+                <ScalarProperty Name="FICHALABORAL" ColumnName="FICHALABORAL" />
+                <ScalarProperty Name="SECTOR" ColumnName="SECTOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="AGILMEDModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="TipodeAcceso" ColumnName="TipodeAcceso" />
+                <ScalarProperty Name="Modulos" ColumnName="Modulos" />
+                <ScalarProperty Name="lastlogin" ColumnName="lastlogin" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ocupaciones">
+            <EntityTypeMapping TypeName="AGILMEDModel.Ocupaciones">
+              <MappingFragment StoreEntitySet="Ocupaciones">
+                <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresas">
+            <EntityTypeMapping TypeName="AGILMEDModel.Empresas">
+              <MappingFragment StoreEntitySet="Empresas">
+                <ScalarProperty Name="limite" ColumnName="limite" />
+                <ScalarProperty Name="creditodias" ColumnName="creditodias" />
+                <ScalarProperty Name="Aseguradora" ColumnName="Aseguradora" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefonos" ColumnName="Telefonos" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="RIF" ColumnName="RIF" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dependientes">
+            <EntityTypeMapping TypeName="AGILMEDModel.Dependientes">
+              <MappingFragment StoreEntitySet="Dependientes">
+                <ScalarProperty Name="PacienteId" ColumnName="PacienteId" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Parentesco" ColumnName="Parentesco" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Dependienteid" ColumnName="Dependienteid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cargos">
+            <EntityTypeMapping TypeName="AGILMEDModel.Cargos">
+              <MappingFragment StoreEntitySet="Cargos">
+                <ScalarProperty Name="via" ColumnName="via" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="indicaciones" ColumnName="indicaciones" />
+                <ScalarProperty Name="presentacion" ColumnName="presentacion" />
+                <ScalarProperty Name="agrupable" ColumnName="agrupable" />
+                <ScalarProperty Name="Kit" ColumnName="Kit" />
+                <ScalarProperty Name="inventario" ColumnName="inventario" />
+                <ScalarProperty Name="precio5" ColumnName="precio5" />
+                <ScalarProperty Name="precio4" ColumnName="precio4" />
+                <ScalarProperty Name="precio3" ColumnName="precio3" />
+                <ScalarProperty Name="precio2" ColumnName="precio2" />
+                <ScalarProperty Name="precio1" ColumnName="precio1" />
+                <ScalarProperty Name="coste" ColumnName="coste" />
+                <ScalarProperty Name="descripción" ColumnName="descripción" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="Tipocargo" ColumnName="Tipocargo" />
+                <ScalarProperty Name="CargoId" ColumnName="CargoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CargosClases">
+            <EntityTypeMapping TypeName="AGILMEDModel.CargosClases">
+              <MappingFragment StoreEntitySet="CargosClases">
+                <ScalarProperty Name="Clase" ColumnName="Clase" />
+                <ScalarProperty Name="TipoCargoId" ColumnName="TipoCargoId" />
+                <ScalarProperty Name="ClaseId" ColumnName="ClaseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleFactura">
+            <EntityTypeMapping TypeName="AGILMEDModel.DetalleFactura">
+              <MappingFragment StoreEntitySet="DetalleFactura">
+                <ScalarProperty Name="idfactura" ColumnName="idfactura" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="totaliza" ColumnName="totaliza" />
+                <ScalarProperty Name="clase" ColumnName="clase" />
+                <ScalarProperty Name="tipocargo" ColumnName="tipocargo" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+                <ScalarProperty Name="preciounitario" ColumnName="preciounitario" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="idcargo" ColumnName="idcargo" />
+                <ScalarProperty Name="Factura" ColumnName="Factura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documentos">
+            <EntityTypeMapping TypeName="AGILMEDModel.Documentos">
+              <MappingFragment StoreEntitySet="Documentos">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+                <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Factura">
+            <EntityTypeMapping TypeName="AGILMEDModel.Factura">
+              <MappingFragment StoreEntitySet="Factura">
+                <ScalarProperty Name="codigodecuenta" ColumnName="codigodecuenta" />
+                <ScalarProperty Name="anio" ColumnName="anio" />
+                <ScalarProperty Name="mes" ColumnName="mes" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Descuentos" ColumnName="Descuentos" />
+                <ScalarProperty Name="neto" ColumnName="neto" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="rif" ColumnName="rif" />
+                <ScalarProperty Name="FormadePago" ColumnName="FormadePago" />
+                <ScalarProperty Name="Dias" ColumnName="Dias" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+                <ScalarProperty Name="Para" ColumnName="Para" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Control" ColumnName="Control" />
+                <ScalarProperty Name="Factura1" ColumnName="Factura" />
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipodeCargos">
+            <EntityTypeMapping TypeName="AGILMEDModel.TipodeCargos">
+              <MappingFragment StoreEntitySet="TipodeCargos">
+                <ScalarProperty Name="TipocargoDesc" ColumnName="TipocargoDesc" />
+                <ScalarProperty Name="TipoCargoId" ColumnName="TipoCargoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Correlativos">
+            <EntityTypeMapping TypeName="AGILMEDModel.Correlativos">
+              <MappingFragment StoreEntitySet="Correlativos">
+                <ScalarProperty Name="EQUIPO" ColumnName="EQUIPO" />
+                <ScalarProperty Name="OTRO2" ColumnName="OTRO2" />
+                <ScalarProperty Name="OTRO1" ColumnName="OTRO1" />
+                <ScalarProperty Name="HOSPITALIZACION" ColumnName="HOSPITALIZACION" />
+                <ScalarProperty Name="INFORMEMEDICO" ColumnName="INFORMEMEDICO" />
+                <ScalarProperty Name="LABORATORIO" ColumnName="LABORATORIO" />
+                <ScalarProperty Name="PRESUPUESTO" ColumnName="PRESUPUESTO" />
+                <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCAL">
+            <EntityTypeMapping TypeName="AGILMEDModel.LOCAL">
+              <MappingFragment StoreEntitySet="LOCAL">
+                <ScalarProperty Name="IMPRESORA2" ColumnName="IMPRESORA2" />
+                <ScalarProperty Name="IMPRESORA" ColumnName="IMPRESORA" />
+                <ScalarProperty Name="SCANNER" ColumnName="SCANNER" />
+                <ScalarProperty Name="CAMARAWEB" ColumnName="CAMARAWEB" />
+                <ScalarProperty Name="EQUIPO" ColumnName="EQUIPO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLINICA">
+            <EntityTypeMapping TypeName="AGILMEDModel.CLINICA">
+              <MappingFragment StoreEntitySet="CLINICA">
+                <ScalarProperty Name="FechadeInstalación" ColumnName="FechadeInstalación" />
+                <ScalarProperty Name="numerodeLicencia" ColumnName="numerodeLicencia" />
+                <ScalarProperty Name="ArchivoLogo" ColumnName="ArchivoLogo" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="DirectorioExportados" ColumnName="DirectorioExportados" />
+                <ScalarProperty Name="DirectorioImagenes" ColumnName="DirectorioImagenes" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="Telefonos" ColumnName="Telefonos" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Direccion4" ColumnName="Direccion4" />
+                <ScalarProperty Name="Direccion3" ColumnName="Direccion3" />
+                <ScalarProperty Name="Direccion2" ColumnName="Direccion2" />
+                <ScalarProperty Name="Direccion1" ColumnName="Direccion1" />
+                <ScalarProperty Name="RIF" ColumnName="RIF" />
+                <ScalarProperty Name="CLINICA1" ColumnName="CLINICA" />
+                <ScalarProperty Name="IDCLINICA" ColumnName="IDCLINICA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subproductos">
+            <EntityTypeMapping TypeName="AGILMEDModel.Subproductos">
+              <MappingFragment StoreEntitySet="Subproductos">
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="subprodid" ColumnName="subprodid" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="cargoid" ColumnName="cargoid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ingresos">
+            <EntityTypeMapping TypeName="AGILMEDModel.Ingresos">
+              <MappingFragment StoreEntitySet="Ingresos">
+                <ScalarProperty Name="aseguradoraid" ColumnName="aseguradoraid" />
+                <ScalarProperty Name="empresaid" ColumnName="empresaid" />
+                <ScalarProperty Name="refieremedico" ColumnName="refieremedico" />
+                <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+                <ScalarProperty Name="cedulapaciente" ColumnName="cedulapaciente" />
+                <ScalarProperty Name="esbeneficiario" ColumnName="esbeneficiario" />
+                <ScalarProperty Name="ceduladebeneficiario" ColumnName="ceduladebeneficiario" />
+                <ScalarProperty Name="nombrepaciente" ColumnName="nombrepaciente" />
+                <ScalarProperty Name="dependienteid" ColumnName="dependienteid" />
+                <ScalarProperty Name="cedulatrabajador" ColumnName="cedulatrabajador" />
+                <ScalarProperty Name="trabajadorid" ColumnName="trabajadorid" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="ticket" ColumnName="ticket" />
+                <ScalarProperty Name="tipodeingreso" ColumnName="tipodeingreso" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="motivo" ColumnName="motivo" />
+                <ScalarProperty Name="procesada" ColumnName="procesada" />
+                <ScalarProperty Name="fechasalida" ColumnName="fechasalida" />
+                <ScalarProperty Name="fechaingreso" ColumnName="fechaingreso" />
+                <ScalarProperty Name="admisionid" ColumnName="admisionid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eventos">
+            <EntityTypeMapping TypeName="AGILMEDModel.Eventos">
+              <MappingFragment StoreEntitySet="Eventos">
+                <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+                <ScalarProperty Name="auditoria" ColumnName="auditoria" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="tipoevento" ColumnName="tipoevento" />
+                <ScalarProperty Name="idevento" ColumnName="idevento" />
+                <ScalarProperty Name="admisionid" ColumnName="admisionid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="medicos">
+            <EntityTypeMapping TypeName="AGILMEDModel.medicos">
+              <MappingFragment StoreEntitySet="medicos">
+                <ScalarProperty Name="especialista" ColumnName="especialista" />
+                <ScalarProperty Name="ncm" ColumnName="ncm" />
+                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+                <ScalarProperty Name="horariodeconsulta" ColumnName="horariodeconsulta" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="telefono2" ColumnName="telefono2" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="doctorid" ColumnName="doctorid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Especialidades">
+            <EntityTypeMapping TypeName="AGILMEDModel.Especialidades">
+              <MappingFragment StoreEntitySet="Especialidades">
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="diagnosticos">
+            <EntityTypeMapping TypeName="AGILMEDModel.diagnosticos">
+              <MappingFragment StoreEntitySet="diagnosticos">
+                <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="medicinas">
+            <EntityTypeMapping TypeName="AGILMEDModel.medicinas">
+              <MappingFragment StoreEntitySet="medicinas">
+                <ScalarProperty Name="via" ColumnName="via" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="indicaciones" ColumnName="indicaciones" />
+                <ScalarProperty Name="presentacion" ColumnName="presentacion" />
+                <ScalarProperty Name="medicamento" ColumnName="medicamento" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipes">
+            <EntityTypeMapping TypeName="AGILMEDModel.recipes">
+              <MappingFragment StoreEntitySet="recipes">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="indicaciones" ColumnName="indicaciones" />
+                <ScalarProperty Name="medicamentoid" ColumnName="medicamentoid" />
+                <ScalarProperty Name="doctorid" ColumnName="doctorid" />
+                <ScalarProperty Name="pacienteid" ColumnName="pacienteid" />
+                <ScalarProperty Name="recipeid" ColumnName="recipeid" />
+                <ScalarProperty Name="ingresoid" ColumnName="ingresoid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sintomas">
+            <EntityTypeMapping TypeName="AGILMEDModel.sintomas">
+              <MappingFragment StoreEntitySet="sintomas">
+                <ScalarProperty Name="sintoma" ColumnName="sintoma" />
+                <ScalarProperty Name="idsintoma" ColumnName="idsintoma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
